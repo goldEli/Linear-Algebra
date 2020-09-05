@@ -17,3 +17,22 @@ class Vector:
     def __add__(self, other):
         assert len(self._values) == len(other)
         return Vector((a + b) for a, b in zip(self._values, other))
+
+    def __sub__(self, other):
+        assert len(self._values) == len(other)
+        return Vector((a - b) for a, b in zip(self._values, other))
+
+    def __mul__(self, k):
+        return Vector((item * k) for item in self._values)
+
+    def __rmul__(self, k):
+        return Vector((item * k) for item in self._values)
+
+    def __iter__(self):
+        return self._values.__iter__()
+
+    def __pos__(self):
+        return 1 * self
+
+    def __neg__(self):
+        return -1 * self
