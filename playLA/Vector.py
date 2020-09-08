@@ -1,6 +1,11 @@
 class Vector:
+
     def __init__(self, lst):
         self._values = lst
+
+    @classmethod
+    def zero(cls, dim):
+        return cls([0] * dim)
 
     def __repr__(self):
         return "Vector({})".format(self._values)
@@ -36,3 +41,4 @@ class Vector:
 
     def __neg__(self):
         return -1 * self
+
