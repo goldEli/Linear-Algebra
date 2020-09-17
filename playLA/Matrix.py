@@ -35,3 +35,7 @@ class Matrix:
     def column_num(self):
         return len(self._values[0])
 
+    def __add__(self, other):
+        assert self.shape() == other.shape()
+
+        return Matrix([[a+b for a, b in zip(self.row_vector(i), other.row_vector(i))]  for i in range(other.row_num())])
