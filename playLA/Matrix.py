@@ -61,3 +61,7 @@ class Matrix:
             assert self.column_num() == other.row_num()
             return Matrix([ [ self.row_vector(j).dot(other.column_vector(i)) for j in range(len(self._values)) ]
                             for i in range(other.column_num())])
+
+    def T(self):
+        return Matrix([ [a for a in self.column_vector(i)]
+                        for i in range(self.column_num())])
