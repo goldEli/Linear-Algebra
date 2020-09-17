@@ -47,3 +47,7 @@ class Matrix:
 
     def __rmul__(self, k):
         return self * k
+
+    @classmethod
+    def zero(cls, r, c):
+        return Matrix([ [0 for _ in range(c)] for _ in range(r)])
