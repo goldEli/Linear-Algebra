@@ -13,7 +13,7 @@ if "__main__" == __name__:
     print(matrix2)
 
     print("add: {}".format(matrix + matrix2))
-    # print("subtract: {}".format(matrix - matrix2))
+    print("subtract: {}".format(matrix - matrix2))
     # print("scalar-mul: {}".format(2 * matrix))
     # print("scalar-mul: {}".format(matrix * 2))
     # print("zero_2_3: {}".format(Matrix.zero(2, 3)))

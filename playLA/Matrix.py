@@ -37,5 +37,7 @@ class Matrix:
 
     def __add__(self, other):
         assert self.shape() == other.shape()
-
         return Matrix([[a+b for a, b in zip(self.row_vector(i), other.row_vector(i))]  for i in range(other.row_num())])
+
+    def __sub__(self, other):
+        return Matrix([[a - b for a, b in zip(self.row_vector(i), other.row_vector(i))] for i in range(other.row_num())])
