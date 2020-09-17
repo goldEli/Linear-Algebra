@@ -41,3 +41,9 @@ class Matrix:
 
     def __sub__(self, other):
         return Matrix([[a - b for a, b in zip(self.row_vector(i), other.row_vector(i))] for i in range(other.row_num())])
+
+    def __mul__(self, k):
+        return Matrix([ [a * k for a in self.row_vector(i)] for i in range(self.row_num()) ])
+
+    def __rmul__(self, k):
+        return self * k
