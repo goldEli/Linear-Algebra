@@ -51,3 +51,13 @@ class Matrix:
     @classmethod
     def zero(cls, r, c):
         return Matrix([ [0 for _ in range(c)] for _ in range(r)])
+
+    def dot(self, other):
+        if isinstance(other, Vector):
+            assert len(other) == self.column_num()
+            return Vector([other.dot(a) for a in self._values])
+
+        if isinstance(other, Matrix):
+            assert self.column_num() == other.row_num()
+            return Matrix([ [ self.row_vector(j).dot(other.column_vector(i)) for j in range(len(self._values)) ]
+                            for i in range(other.column_num())])

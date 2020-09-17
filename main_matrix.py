@@ -1,4 +1,6 @@
 from playLA.Matrix import Matrix
+from playLA.Vector import Vector
+
 
 if "__main__" == __name__:
     matrix = Matrix([[1,2], [3,4]])
@@ -17,4 +19,17 @@ if "__main__" == __name__:
     print("scalar-mul: {}".format(2 * matrix))
     print("scalar-mul: {}".format(matrix * 2))
     print("zero_2_3: {}".format(Matrix.zero(2, 3)))
+
+    T = Matrix([[1.5, 0], [0, 2]])
+    p = Vector([5, 3])
+    b = Vector([5, 3])
+    print(p.dot(b))
+    #
+    P = Matrix([[4, 5], [0, 3]])
+    print("T.dot(P) = {}".format(T.dot(P)))
+    #
+    print("A.dot(B) = {}".format(matrix.dot(matrix2)))
+    print("B.dot(A) = {}".format(matrix2.dot(matrix)))
+
+
 

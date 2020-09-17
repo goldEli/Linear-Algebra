@@ -57,3 +57,6 @@ class Vector:
             raise ZeroDivisionError("normalize error! norm is zero")
 
         return Vector(self._values) / self.norm()
+
+    def dot(self, other):
+        return sum(a * b for a, b in zip(self._values, other))
