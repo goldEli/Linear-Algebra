@@ -35,10 +35,11 @@ class LinearSystem:
                 self.Ab[j] = self.Ab[j] - self.Ab[j][i] * self.Ab[i]
 
     def _backword(self):
-        for i in range(self._m-1):
-            for j in range(self._m - i - 1):
-                index = self._n - i - 1
-                self.Ab[j] = self.Ab[j] - self.Ab[self._m - i - 1] * self.Ab[j][index]
+        n = self._m - 1
+        for i in range(n, -1, -1):
+            for j in range(i-1, -1, -1):
+                print(j, i)
+                self.Ab[j] = self.Ab[j] - self.Ab[j][i] * self.Ab[i]
 
     def gauss_jordan_elimination(self):
         self._forword()
