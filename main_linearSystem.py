@@ -1,6 +1,7 @@
 from playLA.Matrix import Matrix
 from playLA.Vector import Vector
 from playLA.LinearSystem import LinearSystem
+from playLA.LinearSystem import inv
 
 if __name__ == "__main__":
 
@@ -66,12 +67,20 @@ if __name__ == "__main__":
     ls8.fancy_print()
     print()
 
-    A9 = Matrix([[2, 0, 1],
-                 [-1, -1, -2],
-                 [-3, 0, 1]])
-    b9 = Vector([1, 0, 0])
+    A9 = Matrix([[1, 0, 2, 0],
+                 [3, 0, 4, 0],
+                 [0, 1, 0, 2],
+                 [0, 3, 0, 4]])
+    b9 = Vector([1, 0, 0, 1 ])
     ls9 = LinearSystem(A9, b9)
     if not ls9.gauss_jordan_elimination():
         print("No Solution!")
     ls9.fancy_print()
     print()
+
+    print("inverse:")
+    A = Matrix([[1, 2], [3, 4]])
+    invA = inv(A)
+    print(invA)
+    print(A.dot(invA))
+    print(invA.dot(A))

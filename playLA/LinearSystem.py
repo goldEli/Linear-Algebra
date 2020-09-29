@@ -7,9 +7,13 @@ class LinearSystem:
     def __init__(self, A, b):
         self._m = A.row_num()
         self._n = A.column_num()
+        if isinstance(b, Vector):
+            self.Ab = [Vector(A.row_vector(i).underlying_list() + [b[i]])
+                       for i in range(self._m)]
+        if isinstance(b, Matrix):
+            self.Ab = [Vector(A.row_vector(i).underlying_list() + b.row_vector(i).underlying_list())
+                       for i in range(self._m)]
 
-        self.Ab = [Vector(A.row_vector(i).underlying_list() + [b[i]])
-                   for i in range(self._m)]
         self.pivot = []
 
     def _max_row(self, m_index, n_index):
@@ -55,4 +59,17 @@ class LinearSystem:
     def fancy_print(self):
         for i in range(self._m):
             print(" ".join(str(self.Ab[i][j]) for j in range(self._n)), end=" ")
-            print("|", self.Ab[i][-1])
+            print("|", " ".join(str(self.Ab[i][j]) for j in range(self._n, len(self.Ab[0]))))
+
+def inv(A):
+    if A.row_num() != A.column_num():
+        return None
+    n = A.row_num()
+    ls = LinearSystem(A, Matrix.identity(n))
+
+    if ls.gauss_jordan_elimination():
+        ls.fancy_print()
+        invA = [[ls.Ab[j][i] for i in range(n, 2*n)]
+                for j in range(n)]
+        return Matrix(invA)
+
