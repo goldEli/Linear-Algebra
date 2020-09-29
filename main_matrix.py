@@ -32,6 +32,7 @@ if "__main__" == __name__:
     print("B.dot(A) = {}".format(matrix2.dot(matrix)))
 
     print("P.T = {}".format(P.T()))
+    print("identity = {}".format(Matrix.identity(3)))
 
 
 

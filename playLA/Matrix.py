@@ -65,3 +65,13 @@ class Matrix:
     def T(self):
         return Matrix([ [a for a in self.column_vector(i)]
                         for i in range(self.column_num())])
+
+    @classmethod
+    def identity(cls, n):
+        M = [[0] * n for _ in range(n)]
+
+        for i in range(n):
+            for j in range(n):
+                if i == j:
+                    M[i][j] = 1
+        return Matrix(M)
