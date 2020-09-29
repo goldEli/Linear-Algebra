@@ -13,10 +13,10 @@ class LinearSystem:
         self.pivot = []
 
     def _max_row(self, m_index, n_index):
-        max, ret = self.Ab[m_index][n_index], m_index
+        max, ret = abs(self.Ab[m_index][n_index]), m_index
         for i in range(m_index+1, self._m):
-            if self.Ab[i][n_index] > max:
-                max, ret = self.Ab[i][n_index], i
+            if abs(self.Ab[i][n_index]) > max:
+                max, ret = abs(self.Ab[i][n_index]), i
         return ret
 
     def _forword(self):
@@ -26,7 +26,7 @@ class LinearSystem:
             max_row_index = self._max_row(i, k)
 
             self.Ab[max_row_index], self.Ab[i] = self.Ab[i], self.Ab[max_row_index]
-            print(i, k, self.Ab[i][k], self.Ab[i][:])
+
             if is_zero(self.Ab[i][k]):
                 k += 1
                 continue
